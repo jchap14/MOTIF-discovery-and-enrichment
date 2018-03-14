@@ -8,7 +8,6 @@
 ## add modules
 ## Modules:
 module add homer/4.7
-module add weblogo/2.8.2
 
 ## Variables:
 NAME=`basename $1 .bed`
