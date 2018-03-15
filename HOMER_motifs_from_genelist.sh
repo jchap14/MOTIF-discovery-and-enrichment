@@ -14,7 +14,7 @@ NAME=`basename $1 .genes`
 
 cat > $NAME.tempscript.sh << EOF
 #!/bin/bash
-#$ -N $NAME.motifsFromBed
+#$ -N $NAME.motifsFromGenes
 #$ -j y
 #$ -cwd
 #$ -V
