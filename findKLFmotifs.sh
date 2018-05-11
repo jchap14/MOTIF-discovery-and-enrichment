@@ -3,7 +3,7 @@
 ##########################################################################################
 
 ##### submit w looping over multiple peak sets
-## for x in `find *KLF*.Peaks.bed` ; do bash findKLFmotifs.sh $x; done
+## for x in `find *.bed` ; do bash findKLFmotifs.sh $x; done
 
 ## Define variables
 BEDFILE=$1
