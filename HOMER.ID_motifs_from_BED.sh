@@ -12,15 +12,18 @@
 NAME=`basename $1 .bed`
 
 cat > $NAME.tempscript.sh << EOF
-#!/bin/bash
-#$ -N $NAME.motifsFromBed
-#$ -j y
-#$ -cwd
-#$ -V
-#$ -l h_vmem=1G
-#$ -pe shm 12
-#$ -l h_rt=11:59:00
-#$ -l s_rt=11:59:00
+#!/bin/bash -l
+#SBATCH --job-name $NAME.motifsFromBed
+#SBATCH --output=$NAME.motifsFromBed.out
+#SBATCH --mail-user jchap14@stanford.edu
+#SBATCH --mail-type=ALL
+# Request run time & memory
+#SBATCH --time=5:00:00
+#SBATCH --mem=1G
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=12
+#SBATCH --export=ALL
+#SBATCH --account=mpsnyder
 
 ##### Run commands:
 ## add -dumpFasta to get FASTA output also
@@ -28,7 +31,7 @@ findMotifsGenome.pl $1 hg19 $NAME.HOMER_motifs -size given -p 12 -preparsedDir .
 EOF
 
 ## qsub then remove the tempscript
-qsub $NAME.tempscript.sh
+sbatch $NAME.tempscript.sh #scg
 sleep 1
 rm $NAME.tempscript.sh
 
