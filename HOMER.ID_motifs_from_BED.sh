@@ -5,9 +5,8 @@
 
 # for x in `/bin/ls *.bed` ; do bash HOMER.ID_motifs_from_BED.sh $x; done
 
-## add modules
-## Modules:
-module add homer/4.7
+## add modules:
+# module add homer/4.7 #not needed, in conda environment
 
 ## Variables:
 NAME=`basename $1 .bed`
